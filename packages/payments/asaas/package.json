@@ -1,0 +1,20 @@
+{
+  "name": "@codespar/mcp-asaas",
+  "version": "0.1.0",
+  "description": "MCP server for Asaas — billing automation, Pix, boleto, credit card, subscriptions",
+  "type": "module",
+  "main": "./dist/index.js",
+  "bin": { "mcp-asaas": "./dist/index.js" },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.0"
+  },
+  "license": "MIT",
+  "keywords": ["mcp", "asaas", "payments", "pix", "boleto", "brazil"]
+}
