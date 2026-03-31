@@ -1,0 +1,84 @@
+name: Publish to npm
+
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: 'Package to publish (e.g., "all", "payments/asaas", "erp/omie")'
+        required: true
+        default: 'unpublished'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build all packages
+        run: npm run build
+
+      - name: Publish packages
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          INPUT="${{ github.event.inputs.package }}"
+
+          if [ "$INPUT" = "all" ]; then
+            # Publish all packages
+            for dir in packages/*/*/; do
+              if [ -f "$dir/package.json" ]; then
+                echo "Publishing $dir..."
+                cd "$dir"
+                npm publish --access public || echo "Skipped (already published or error)"
+                cd "$GITHUB_WORKSPACE"
+                sleep 5
+              fi
+            done
+          elif [ "$INPUT" = "unpublished" ]; then
+            # Only publish packages that aren't on npm yet
+            for dir in packages/*/*/; do
+              if [ -f "$dir/package.json" ]; then
+                PKG=$(node -e "console.log(require('./$dir/package.json').name)")
+                VER=$(node -e "console.log(require('./$dir/package.json').version)")
+                # Check if already published
+                if npm view "$PKG@$VER" version 2>/dev/null; then
+                  echo "✓ $PKG@$VER already published"
+                else
+                  echo "Publishing $PKG@$VER..."
+                  cd "$dir"
+                  npm publish --access public || echo "Failed: $PKG"
+                  cd "$GITHUB_WORKSPACE"
+                  sleep 5
+                fi
+              fi
+            done
+          else
+            # Publish specific package
+            DIR="packages/$INPUT"
+            if [ -f "$DIR/package.json" ]; then
+              cd "$DIR"
+              npm publish --access public
+            else
+              echo "Package not found: $DIR"
+              exit 1
+            fi
+          fi
+
+      - name: Verify published packages
+        run: |
+          echo "=== Published packages ==="
+          for dir in packages/*/*/; do
+            if [ -f "$dir/package.json" ]; then
+              PKG=$(node -e "console.log(require('./$dir/package.json').name)")
+              VER=$(npm view "$PKG" version 2>/dev/null || echo "NOT FOUND")
+              echo "$PKG: $VER"
+            fi
+          done
