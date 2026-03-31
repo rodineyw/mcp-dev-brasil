@@ -176,10 +176,11 @@ Cielo · Stone · Vindi · Celcoin · Conta Azul · Take Blip · VTEX · Bling �
 [Model Context Protocol](https://modelcontextprotocol.io/) is the open standard for connecting AI agents to external tools. Instead of each agent building its own integrations, MCP provides a typed, discoverable interface that works with Claude, ChatGPT, Copilot, Cursor, and more.
 
 ```
-┌─────────┐     ┌───────────┐     ┌──────────────┐
-│ AI Agent │────▶│ MCP Server│────▶│ Brazilian API│
-│ (Claude) │◀────│ (this repo)│◀────│ (Asaas, etc) │
-└─────────┘     └───────────┘     └──────────────┘
+AI Agent (Claude, ChatGPT, Cursor)
+    ↕
+MCP Server (this repo)
+    ↕
+Brazilian API (Zoop, Nuvem Fiscal, etc.)
 ```
 
 Each MCP server in this repo:
