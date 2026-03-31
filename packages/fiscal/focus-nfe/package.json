@@ -1,0 +1,20 @@
+{
+  "name": "@codespar/mcp-focus-nfe",
+  "version": "0.1.0",
+  "description": "MCP server for Focus NFe — NFe, NFSe, NFCe emission and management",
+  "type": "module",
+  "main": "./dist/index.js",
+  "bin": { "mcp-focus-nfe": "./dist/index.js" },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.0"
+  },
+  "license": "MIT",
+  "keywords": ["mcp", "focus-nfe", "nfe", "nfse", "fiscal", "brazil"]
+}

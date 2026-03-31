@@ -4,7 +4,12 @@
   "private": true,
   "description": "MCP servers for Brazilian services",
   "workspaces": [
-    "packages/payments/*"
+    "packages/payments/*",
+    "packages/identity/*",
+    "packages/fiscal/*",
+    "packages/communication/*",
+    "packages/ecommerce/*",
+    "packages/banking/*"
   ],
   "scripts": {
     "build": "npm run build --workspaces",

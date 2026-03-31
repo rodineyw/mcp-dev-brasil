@@ -1,0 +1,20 @@
+{
+  "name": "@codespar/mcp-efi",
+  "version": "0.1.0",
+  "description": "MCP server for EFI (Gerencianet) — Pix, charges, carnets, cobranças",
+  "type": "module",
+  "main": "./dist/index.js",
+  "bin": { "mcp-efi": "./dist/index.js" },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.0"
+  },
+  "license": "MIT",
+  "keywords": ["mcp", "efi", "gerencianet", "pix", "payments", "brazil"]
+}

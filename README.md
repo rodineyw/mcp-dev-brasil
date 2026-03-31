@@ -23,48 +23,48 @@ A collection of [Model Context Protocol (MCP)](https://modelcontextprotocol.io/)
 | [iugu](packages/payments/iugu) | ✅ Available | Payments, subscriptions, marketplace split |
 | [Pix BCB](packages/payments/pix-bcb) | ✅ Available | Pix instant payments (Central Bank API) |
 | [Zoop](packages/payments/zoop) | ✅ Available | White-label payments, marketplace split |
-| Pagar.me | 🔜 Coming soon | Stone ecosystem payments |
-| EBANX | 🔜 Coming soon | Cross-border payments |
+| [Pagar.me](packages/payments/pagar-me) | ✅ Available | Stone ecosystem — cards, Pix, boleto, recipients |
+| [EBANX](packages/payments/ebanx) | ✅ Available | Cross-border payments for Latin America |
+| [Gerencianet/EFÍ](packages/payments/efi) | ✅ Available | Pix, boleto, Pix collection, open finance |
 | Vindi | 🔜 Coming soon | Recurring billing |
-| Gerencianet/EFÍ | 🔜 Coming soon | Pix, boleto, Pix collection |
 | Cielo | 🔜 Coming soon | Card processing |
 | Stone | 🔜 Coming soon | Acquiring, banking |
 | PagBrasil | 🔜 Coming soon | International payments |
 | Celcoin | 🔜 Coming soon | Banking as a service |
 
-### Fiscal (Coming Soon)
+### Fiscal
 
 | Server | Status | Description |
 |--------|--------|-------------|
-| Focus NFe | 🔜 | NFe/NFSe emission |
-| Conta Azul | 🔜 | ERP + fiscal |
-| Omie | 🔜 | ERP + fiscal |
-| Bling | 🔜 | ERP + fiscal |
+| [Focus NFe](packages/fiscal/focus-nfe) | ✅ Available | NFe/NFSe/NFCe emission and management |
+| Conta Azul | 🔜 Coming soon | ERP + fiscal |
+| Omie | 🔜 Coming soon | ERP + fiscal |
+| Bling | 🔜 Coming soon | ERP + fiscal |
 
-### Communication (Coming Soon)
-
-| Server | Status | Description |
-|--------|--------|-------------|
-| Evolution API | 🔜 | WhatsApp automation |
-| Zenvia | 🔜 | Multichannel messaging |
-| Take Blip | 🔜 | Chatbot platform |
-| RD Station | 🔜 | Marketing automation |
-
-### Banking / Open Finance (Coming Soon)
+### Communication
 
 | Server | Status | Description |
 |--------|--------|-------------|
-| Open Finance Brasil | 🔜 | Open Banking APIs |
-| BrasilAPI | 🔜 | CEP, CNPJ, banks, holidays |
-| ReceitaWS | 🔜 | CPF/CNPJ validation |
+| [Evolution API](packages/communication/evolution-api) | ✅ Available | WhatsApp automation (Baileys) |
+| [Zenvia](packages/communication/zenvia) | ✅ Available | Multichannel messaging (SMS, WhatsApp, RCS) |
+| [RD Station](packages/communication/rd-station) | ✅ Available | Marketing automation, CRM, leads |
+| Take Blip | 🔜 Coming soon | Chatbot platform |
 
-### E-commerce / Logistics (Coming Soon)
+### Identity / Data
 
 | Server | Status | Description |
 |--------|--------|-------------|
-| Melhor Envio | 🔜 | Shipping quotes + tracking |
-| Correios | 🔜 | Brazil postal service |
-| VTEX | 🔜 | E-commerce platform |
+| [BrasilAPI](packages/identity/brasil-api) | ✅ Available | CEP, CNPJ, banks, holidays, FIPE, DDD |
+| Open Finance Brasil | 🔜 Coming soon | Open Banking APIs |
+| ReceitaWS | 🔜 Coming soon | CPF/CNPJ validation |
+
+### E-commerce / Logistics
+
+| Server | Status | Description |
+|--------|--------|-------------|
+| [Melhor Envio](packages/ecommerce/melhor-envio) | ✅ Available | Shipping quotes, tracking, labels |
+| [Correios](packages/ecommerce/correios) | ✅ Available | Brazil postal service — tracking, shipping, CEP |
+| VTEX | 🔜 Coming soon | E-commerce platform |
 
 ## Quick Start
 
