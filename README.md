@@ -16,7 +16,7 @@
   <p align="center">
     <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a>
     <img src="https://img.shields.io/badge/servers-33-green" alt="33 servers">
-    <img src="https://img.shields.io/badge/tools-~300-orange" alt="~320 tools">
+    <img src="https://img.shields.io/badge/tools-~340-orange" alt="~340 tools">
     <img src="https://img.shields.io/badge/MCP-compatible-purple" alt="MCP compatible">
   </p>
 </p>
