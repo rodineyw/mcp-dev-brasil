@@ -5,14 +5,15 @@ WORKDIR /app
 # Copy workspace root
 COPY package.json package-lock.json ./
 
-# Copy the target server + shared
-COPY packages/identity/brasil-api/ packages/identity/brasil-api/
-COPY packages/shared/ packages/shared/
+# Copy the target server (exclude tests)
+COPY packages/identity/brasil-api/package.json packages/identity/brasil-api/
+COPY packages/identity/brasil-api/tsconfig.json packages/identity/brasil-api/
+COPY packages/identity/brasil-api/src/index.ts packages/identity/brasil-api/src/
 
-# Install all workspace deps
-RUN npm install --workspace=packages/identity/brasil-api --workspace=packages/shared
+# Install deps
+RUN npm install --workspace=packages/identity/brasil-api
 
-# Build
+# Build (no test files = no vitest dependency needed)
 RUN npm run build --workspace=packages/identity/brasil-api
 
 ENV MCP_HTTP=true
