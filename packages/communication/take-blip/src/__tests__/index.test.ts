@@ -1,0 +1,50 @@
+import { describe, it, expect, vi, beforeEach } from "vitest";
+
+let listToolsHandler: Function;
+let callToolHandler: Function;
+
+vi.mock("@modelcontextprotocol/sdk/server/index.js", () => {
+  class FakeServer {
+    constructor() {}
+    setRequestHandler(schema: any, handler: Function) {
+      if (JSON.stringify(schema).includes("tools/list")) listToolsHandler = handler;
+      if (JSON.stringify(schema).includes("tools/call")) callToolHandler = handler;
+    }
+    connect() { return Promise.resolve(); }
+  }
+  return { Server: FakeServer };
+});
+
+vi.mock("@modelcontextprotocol/sdk/server/stdio.js", () => ({ StdioServerTransport: class {} }));
+
+process.env.TAKE_BLIP_BOT_ID = "testbot";
+process.env.TAKE_BLIP_ACCESS_KEY = "test-key";
+
+const mockFetch = vi.fn();
+global.fetch = mockFetch as any;
+
+beforeEach(async () => {
+  vi.resetModules();
+  listToolsHandler = undefined as any;
+  callToolHandler = undefined as any;
+  mockFetch.mockReset();
+  global.fetch = mockFetch as any;
+  await import("../index.js");
+});
+
+describe("mcp-take-blip", () => {
+  it("should register 8 tools", async () => {
+    const result = await listToolsHandler();
+    expect(result.tools).toHaveLength(8);
+  });
+
+  it("should call correct API endpoint for get_contacts", async () => {
+    mockFetch.mockResolvedValueOnce({ ok: true, json: () => Promise.resolve({ status: "success", resource: { items: [] } }) });
+
+    await callToolHandler({ params: { name: "get_contacts", arguments: {} } });
+
+    const [url, opts] = mockFetch.mock.calls[0];
+    expect(url).toContain("msging.net/commands");
+    expect(opts.method).toBe("POST");
+  });
+});
