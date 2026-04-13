@@ -63,12 +63,21 @@ describe("mcp-asaas", () => {
     "create_subaccount",
     "get_installments",
     "create_transfer",
+    "create_pix_qrcode",
+    "list_transfers",
+    "create_notification",
+    "list_notifications",
+    "get_customer",
+    "update_payment",
+    "delete_payment",
+    "refund_payment",
+    "get_subscription",
   ];
 
   describe("ListTools", () => {
-    it("should register exactly 15 tools", async () => {
+    it("should register exactly 24 tools", async () => {
       const result = await listToolsHandler();
-      expect(result.tools).toHaveLength(15);
+      expect(result.tools).toHaveLength(24);
     });
 
     it("should include all expected tool names", async () => {

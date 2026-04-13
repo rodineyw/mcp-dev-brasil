@@ -81,12 +81,20 @@ describe("mcp-zoop", () => {
     "get_transfer",
     "create_subscription",
     "list_receivables",
+    "create_pix_payment",
+    "get_pix_payment",
+    "cancel_subscription",
+    "list_subscriptions",
+    "list_disputes",
+    "get_marketplace",
+    "get_dispute",
+    "get_subscription",
   ];
 
   describe("ListTools", () => {
-    it("should register exactly 20 tools", async () => {
+    it("should register exactly 28 tools", async () => {
       const result = await listToolsHandler();
-      expect(result.tools).toHaveLength(20);
+      expect(result.tools).toHaveLength(28);
     });
 
     it("should include all expected tool names", async () => {
